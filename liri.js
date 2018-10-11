@@ -23,7 +23,7 @@ if (userCommand === "spotify-this-song" && process.argv.length === 4) {
             return console.log('Error occurred: ' + err);
         }
 
-        console.log("\n" + "SONG INFO" + "\n");
+        console.log("\nSONG INFO\n");
         console.log("Artist(s): " + data.tracks.items[0].artists[0].name);
         console.log("Song Name: " + data.tracks.items[0].name);
         console.log("Preview Link: " + data.tracks.items[0].preview_url);
@@ -39,7 +39,7 @@ else if (userCommand === "spotify-this-song" && process.argv.length === 3) {
         //     console.log(i + " " + data.tracks.items[i].name);
         // }
         // console.log(data.tracks.items[7]);
-        console.log("\n" + "SONG INFO" + "\n");
+        console.log("\nSONG INFO\n");
         console.log("Artist(s): " + data.tracks.items[7].artists[0].name);
         console.log("Song Name: " + data.tracks.items[7].name);
         console.log("Preview Link: " + data.tracks.items[7].preview_url);
@@ -56,7 +56,7 @@ if (userCommand === "concert-this" && process.argv.length === 4) {
 
         var info = JSON.parse(response.body);
         // console.log(info);
-        console.log("\n" + "CONCERT INFO" + "\n");
+        console.log("\nCONCERT INFO\n");
 
         for (var i = 0; i < info.length; i++) {
             console.log("Venue: " + info[i].venue.name);
@@ -66,12 +66,11 @@ if (userCommand === "concert-this" && process.argv.length === 4) {
             else {
                 console.log("City: " + info[i].venue.city + ", " + info[i].venue.region);
             }
-            console.log(moment(info[i].datetime).format("MMMM Do YYYY"));
-            console.log("\n")
+            console.log(moment(info[i].datetime).format("MMMM Do YYYY") + "\n");
         }
     });
 }
-else if (userCommand === "concert-this" && process.argv.length === 3){
+else if (userCommand === "concert-this" && process.argv.length === 3) {
     console.log("\nOops! Looks like you forgot to include which artist/band you're searching for.\n")
 }
 
@@ -83,7 +82,33 @@ if (userCommand === "movie-this" && process.argv.length === 4) {
         }
 
         var info = JSON.parse(response.body);
-        console.log(info.Title);
+        console.log("\nMovie INFO\n");
+        console.log("Title: " + info.Title);
+        console.log("Year: " + info.Year);
+        console.log("IMBD Rating: " + info.Ratings[0].Value);
+        console.log("Rotten Tomatoes Rating: " + info.Ratings[1].Value);
+        console.log("Produced In: " + info.Country);
+        console.log("Language: " + info.Language);
+        console.log("Plot: " + info.Plot);
+        console.log("Actors: " + info.Actors + "\n");
+    });
+}
+else if (userCommand === "movie-this" && process.argv.length === 3){
+    request("http://www.omdbapi.com/?apikey=trilogy&r=json&t=mr+nobody", function (error, response) {
+        if (error) {
+            console.log('error:', error);
+        }
+
+        var info = JSON.parse(response.body);
+        console.log("\nMovie INFO\n");
+        console.log("Title: " + info.Title);
+        console.log("Year: " + info.Year);
+        console.log("IMBD Rating: " + info.Ratings[0].Value);
+        console.log("Rotten Tomatoes Rating: " + info.Ratings[1].Value);
+        console.log("Produced In: " + info.Country);
+        console.log("Language: " + info.Language);
+        console.log("Plot: " + info.Plot);
+        console.log("Actors: " + info.Actors + "\n");
     });
 }
 
