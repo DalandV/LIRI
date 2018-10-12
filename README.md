@@ -1,6 +1,6 @@
 # LIRI
 
-This app was created in order to hone my skills with nodejs and the command line.
+This is a command line interface app that was created in order to hone my skills with nodejs, npm and the command line.
 
 To use the app type in the command line 'node liri.js' followed by one of four commands:
 * spotify-this-song
