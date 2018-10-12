@@ -125,9 +125,9 @@ liriOMBD();
 if (userCommand === "do-what-it-says") {
     fs.readFile('random.txt', "utf8", (err, data) => {
         if (err) throw err;
-        console.log(data);
+        // console.log(data);
         dataArray = data.split(",");
-        console.log(dataArray[0]);
+        // console.log(dataArray[0]);
 
         process.argv.length = 4
 
